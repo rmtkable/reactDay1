@@ -11,7 +11,7 @@
 
 // Instructions: The current code uses JSX to assign a div element to the constant JSX. Replace the div with an h1 element and add the text Hello JSX! inside it.
 
-const JSX = <div></div>;
+const JSX = <div>Hello JSX!</div>;
 
 // 2 React: Create a Complex JSX Element
 // The last challenge was a simple example of JSX, but JSX can represent more complex HTML as well.
@@ -26,11 +26,11 @@ const JSX = <div></div>;
 
 // Valid JSX:
 
-// <div>
-//   <p>Paragraph One</p>
-//   <p>Paragraph Two</p>
-//   <p>Paragraph Three</p>
-// </div>
+<div>
+  <p>Paragraph One</p>
+  <p>Paragraph Two</p>
+  <p>Paragraph Three</p>
+</div>
 // Invalid JSX:
 
 // <p>Paragraph One</p>
@@ -42,6 +42,18 @@ const JSX = <div></div>;
 
 // Note: When rendering multiple elements like this, you can wrap them all in parentheses, but it's not strictly required. Also notice this challenge uses a div tag to wrap all the child elements within a single parent element. If you remove the div, the JSX will no longer transpile. Keep this in mind, since it will also apply when you return JSX elements in React components.
 
+const JSX = (
+  <div>
+    <h1>Happy</h1>
+    <p>Thursday</p>
+    <ul>
+      <li>Have a</li>
+      <li>Great</li>
+      <li>Day</li>
+    </ul>
+  </div>
+)
+
 // 3.React: Add Comments in JSX
 // JSX is a syntax that gets compiled into valid JavaScript. Sometimes, for readability, you might need to add comments to your code. Like most programming languages, JSX has its own way to do this.
 
@@ -51,6 +63,7 @@ const JSX = <div></div>;
 const JSX = (
     <div>
       <h1>This is a block of JSX</h1>
+      {/* Here is my comment */}
       <p>Here's a subtitle</p>
     </div>
   );
@@ -75,7 +88,7 @@ const JSX = (
     </div>
   );
   // Change code below this line
-
+ReactDOM.render(<JSX/>, document.getElementById('challenge-node'));
 
   // 5 Define an HTML Class in JSX
 // Now that you're getting comfortable writing JSX, you may be wondering how it differs from HTML.
@@ -88,7 +101,7 @@ const JSX = (
 
 // Apply a class of myDiv to the div provided in the JSX code.
 const JSX = (
-  <div>
+  <div className = "myDiv">
     <h1>Add a class to this div</h1>
   </div>
 );
@@ -108,13 +121,13 @@ const JSX = (
 // Fix the errors in the code editor so that it is valid JSX and successfully transpiles. Make sure you don't change any of the content - you only need to close tags where they are needed.
 
 
-// const JSX = (
-//   <div>
-//     <h2>Welcome to React!</h2> <br >
-//     <p>Be sure to close all tags!</p>
-//     <hr >
-//   </div>
-// );
+const JSX = (
+  <div>
+    <h2>Welcome to React!</h2> <br />
+    <p>Be sure to close all tags!</p>
+    <hr />
+  </div>
+);
 
  {/* 7 Create a Stateless Functional Component
 Components are the core of React. Everything in React is a component and here you will learn how to create one.
@@ -137,23 +150,27 @@ The code editor has a function called MyComponent. Complete this function so it 
 Note: The text is considered a child of the div element, so you will not be able to use a self-closing tag. */}
 
 const MyComponent = function() {
- 
+  return (
+    <div>
+      <div>Almost the Weekend. Who is gonna win tonight?</div>
+    </div>
+  )
 }
 
 //8 Create a React Component
 // The other way to define a React component is with the ES6 class syntax. In the following example, Kitten extends React.Component:
 
-// class Kitten extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
+class Kitten extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-//   render() {
-//     return (
-//       <h1>Hi</h1>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <h1>Hi</h1>
+    );
+  }
+}
 // This creates an ES6 class Kitten which extends the React.Component class. So the Kitten class now has access to many useful React features, such as local state and lifecycle hooks. Don't worry if you aren't familiar with these terms yet, they will be covered in greater detail in later challenges. Also notice the Kitten class has a constructor defined within it that calls super(). It uses super() to call the constructor of the parent class, in this case React.Component. The constructor is a special method used during the initialization of objects that are created with the class keyword. It is best practice to call a component's constructor with super, and pass props to both. This makes sure the component is initialized properly. For now, know that it is standard for this code to be included. Soon you will see other uses for the constructor as well as props.
 
 // MyComponent is defined in the code editor using class syntax. Finish writing the render method so it returns a div element that contains an h1 with the text Hello React!.
@@ -164,7 +181,11 @@ class MyComponent extends React.Component {
   }
   render() {
     // Change code below this line
-
+    return (
+      <div>
+        <h1>Raiden</h1>
+      </div>
+    )
 
 
     // Change code above this line
@@ -176,13 +197,13 @@ class MyComponent extends React.Component {
 
 // To compose these components together, you could create an App parent component which renders each of these three components as children. To render a component as a child in a React component, you include the component name written as a custom HTML tag in the JSX. For example, in the render method you could write:
 
-// return (
-//  <App>
-//   <Navbar />
-//   <Dashboard />
-//   <Footer />
-//  </App>
-// )
+return (
+ <App>
+  <Navbar />
+  <Dashboard />
+  <Footer />
+ </App>
+)
 // When React encounters a custom HTML tag that references another component (a component name wrapped in < /> like in this example), it renders the markup for that component in the location of the tag. This should illustrate the parent/child relationship between the App component and the Navbar, Dashboard, and Footer.
 
 // In the code editor, there is a simple functional component called ChildComponent and a class component called ParentComponent. Compose the two together by rendering the ChildComponent within the ParentComponent. Make sure to close the ChildComponent tag with a forward slash.
@@ -207,6 +228,7 @@ class ParentComponent extends React.Component {
         <h1>I am the parent</h1>
         { /* Change code below this line */ }
       
+        <ChildComponent />
 
         { /* Change code above this line */ }
       </div>
